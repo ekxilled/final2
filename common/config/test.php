@@ -1,4 +1,4 @@
-<?php
+./vendor/bin/codecept run<?php
 return [
     'id' => 'app-common-tests',
     'basePath' => dirname(__DIR__),
