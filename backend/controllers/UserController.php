@@ -14,6 +14,14 @@ use yii\filters\VerbFilter;
  */
 class UserController extends Controller
 {
+
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, ['incoming'])) {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
     /**
      * @inheritdoc
      */

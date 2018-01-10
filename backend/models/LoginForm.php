@@ -46,10 +46,11 @@ class LoginForm extends Model
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
-
-            if($user->isadmin != 1) {
-                $this->addError($attribute, "You're not an admin.");
-            }
+//            if(!$user) {
+//                if($user->isadmin != 1) {
+//                    $this->addError($attribute, "You're not an admin.");
+//                }
+//            }
         }
     }
 
@@ -60,11 +61,14 @@ class LoginForm extends Model
      */
     public function login()
     {
-
+//        var_dump($_POST);
+//        die;
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->user->login($this->getUser() , $this->rememberMe ? 3600 * 24 * 30 : 0);
+
         }
-        
+
+
         return false;
     }
 
